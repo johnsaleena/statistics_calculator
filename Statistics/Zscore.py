@@ -9,4 +9,4 @@ def zscore(numbers):
     sd = psd(numbers)
     m = mean(numbers)
     result = subtraction(m, row_value)
-    return division(sd,result)
+    return division(result, m)
