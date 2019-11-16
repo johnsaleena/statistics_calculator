@@ -1,11 +1,16 @@
 from Calculator.Calculator import Calculator
+from Statistics.Confidence_interval import confidence_interval
 from Statistics.Mean import mean
+from Statistics.Pop_corr_coeff import Pop_correlation_coefficient
+from Statistics.Proportion import proportion
 from Statistics.SampleMean import sample_mean
 from Statistics.Median import median
 from Statistics.Mode import mod
 from Statistics.Psd import psd
 from Statistics.Ssd import ssd
 from Statistics.Vp import vp
+from Statistics.Vpp import var_pop_prop
+from Statistics.Vsp import var_samp_prop
 from Statistics.Zscore import zscore
 # from Statistics.Ssd import ssd
 from CsvReader.CsvReader import CsvReader
@@ -48,3 +53,22 @@ class Statistics(Calculator):
 
     def z_score(self, a):
         self.result = zscore(a)
+
+    def proportion(self, a):
+        self.result = proportion(a)
+        return self.result
+
+    def var_pop_proportion(self, a):
+        self.result = var_pop_prop(a)
+        return self.result
+
+    def popcorcoeff(self, a, b):
+        return Pop_correlation_coefficient(a, b)
+
+    def conf_interval(self, a):
+        self.result = confidence_interval(a)
+        return self.result
+
+    def variance_sample_proportion(self, a):
+        self.result = var_samp_prop(a)
+        return self.result
