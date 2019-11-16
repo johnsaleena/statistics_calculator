@@ -15,4 +15,5 @@ def psd(numbers):
         result2 = subtraction(numb, result)
         sq = squaree(result2)
         total = addition(total, sq)
-    return squar_rot(division(num_values, total))
+        result3 = division(num_values, total)
+    return squar_rot(result3)
