@@ -1,6 +1,7 @@
 from Calculator.Calculator import Calculator
 from Statistics.Confidence_interval import confidence_interval
 from Statistics.Mean import mean
+from Statistics.P_value import P_value
 from Statistics.Pop_corr_coeff import Pop_correlation_coefficient
 from Statistics.Proportion import proportion
 from Statistics.SampleMean import sample_mean
@@ -72,3 +73,6 @@ class Statistics(Calculator):
     def variance_sample_proportion(self, a):
         self.result = var_samp_prop(a)
         return self.result
+
+    def p_value(self, a):
+        return P_value(a)

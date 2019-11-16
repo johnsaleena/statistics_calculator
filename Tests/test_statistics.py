@@ -46,7 +46,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_sstandard_devation(self):
         test_data = CsvReader("/Tests/Data/datapoints.csv")
-        #answers = CsvReader("/Tests/Data/answers.csv").data
+    #    answers = CsvReader("/Tests/Data/answers.csv").data
         values = fetchRawdata(test_data, 'value')
         x = self.statistics.sample_sd(values)
         # x, z = self.statistics.sample_sd(values)
@@ -54,8 +54,8 @@ class MyTestCase(unittest.TestCase):
         # z = round(z, 3)
         # self.assertEqual(x, z)
         x = round(x, 3)
-        #for column in answers:
-        self.assertEqual(x,x)
+    #    for column in answers:
+        self.assertEqual(x, x)
         # self.assertNotEqual(x, "Sample Std Deviation is incorrect")
 
     # for column in answers:
@@ -74,7 +74,7 @@ class MyTestCase(unittest.TestCase):
         values = fetchRawdata(test_data, 'value')
         # pprint(values)
         for column in answers:
-            self.assertEqual(self.statistics.z_score(values), (column['zscore']))
+            self.assertEqual(self.statistics.z_score(values), float((column['zscore'])))
 
     def test_proportion_calculator(self):
         test_data = CsvReader("/Tests/Data/datapoints.csv")
