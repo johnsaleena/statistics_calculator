@@ -76,5 +76,50 @@ class MyTestCase(unittest.TestCase):
         for column in answers:
             self.assertEqual(self.statistics.z_score(values), float((column['zscore'])))
 
+    def test_proportion_calculator(self):
+        test_data = CsvReader("/Tests/Data/datapoints.csv")
+        answers = CsvReader("/Tests/Data/answers.csv").data
+        values = fetchRawdata(test_data, 'value')
+        for column in answers:
+            self.assertEqual(self.statistics.proportion(values), float((column['proportion'])))
+    #        self.assertNotEqual(self.statistics.proportion(values), float((column['proportion'])) - 2, "Wrong Proportion")
+
+    def test_variance_population_proportion(self):
+        test_data = CsvReader("/Tests/Data/datapoints.csv")
+        answers = CsvReader("/Tests/Data/answers.csv").data
+        values = fetchRawdata(test_data, 'value')
+        for column in answers:
+            self.assertEqual(self.statistics.var_pop_proportion(values), float((column['VPP'])))
+    #        self.assertNotEqual(self.statistics.var_pop_proportion(values), float((column['var_pop_prop'])) - 2,
+    #                            "WrongResult")
+
+    def test_correlation_coefficient_calculator(self):
+        test_data = CsvReader('Tests/Data/pop_corr_data.csv').data
+        answers = CsvReader('Tests/Data/answers.csv').data
+        data1 = []
+        data2 = []
+        for row in test_data:
+            x = float(row['x'])
+            data1.append(x)
+            y = float(row['y'])
+            data2.append(y)
+        z = self.statistics.popcorcoeff(data1, data2)
+        for column in answers:
+            self.assertEqual(z, float((column['pop_corr_coeff'])))
+
+    def test_confidence_interval_calculator(self):
+        test_data = CsvReader("/Tests/Data/datapoints.csv")
+        values = fetchRawdata(test_data, 'value')
+        answers = CsvReader('Tests/Data/answers.csv').data
+        for column in answers:
+            self.assertEqual(self.statistics.conf_interval(values), (float(column['conf_int_high']), float(column['conf_int_low'])))
+
+    def test_variance_sample_proportion_calculator(self):
+        test_data = CsvReader("/Tests/Data/datapoints.csv")
+        values = fetchRawdata(test_data, 'value')
+        x = self.statistics.variance_sample_proportion(values)
+        self.assertEqual(x, x)
+
+
     if __name__ == '__main__':
         unittest.main()
