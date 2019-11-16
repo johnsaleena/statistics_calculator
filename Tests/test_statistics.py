@@ -74,7 +74,7 @@ class MyTestCase(unittest.TestCase):
         values = fetchRawdata(test_data, 'value')
         # pprint(values)
         for column in answers:
-            self.assertEqual(self.statistics.z_score(values), float((column['zscore'])))
+            self.assertEqual(self.statistics.z_score(values), (column['zscore']))
 
     def test_proportion_calculator(self):
         test_data = CsvReader("/Tests/Data/datapoints.csv")
